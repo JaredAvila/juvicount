@@ -32,6 +32,31 @@
 .Register input.Btn {
     background-color: rgb(198, 137, 255);
     border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.Register input.Btn:hover {
+    background-color: rgb(213, 175, 252);
+}
+
+.Accnt {
+    padding-top: 10px;
+    color: rgb(156, 156, 156);
+}
+
+.Link {
+    color: rgb(121, 134, 0);
+    text-decoration: none;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: -.02rem;
+}
+
+.Link:hover {
+    color: rgb(154, 189, 0);
+    text-decoration: none;
+    font-size: 1rem;
 }
 
 @media only screen and (max-width: 500px) {

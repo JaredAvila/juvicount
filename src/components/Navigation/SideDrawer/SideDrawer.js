@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import NavItems from "../NavItems/NavItmes";
+import NavItems from "../NavItems/NavItems";
 import styles from "./SideDrawer.module.css";
 import BackDrop from "../../../UI/BackDrop/BackDrop";
 

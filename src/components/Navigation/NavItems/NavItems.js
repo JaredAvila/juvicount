@@ -1,11 +1,11 @@
 import React from "react";
 import NavItem from "./NavItem/NavItem";
 
-import * as styles from "./NavItmes.module.css";
+import * as styles from "./NavItems.module.css";
 
-const NavItmes = props => {
+const NavItems = props => {
   return (
-    <ul className={styles.NavItmes} onClick={props.clicked}>
+    <ul className={styles.NavItems} onClick={props.clicked}>
       <NavItem link="/">Login</NavItem>
       <NavItem link="/register">Register</NavItem>
       <NavItem link="/wallet">Wallet</NavItem>
@@ -13,4 +13,4 @@ const NavItmes = props => {
   );
 };
 
-export default NavItmes;
+export default NavItems;

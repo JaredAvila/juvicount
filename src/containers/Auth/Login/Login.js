@@ -47,8 +47,10 @@ class Login extends Component {
           />
           <input className={styles.Btn} type="submit" value="Log In" />
         </form>
-        <p>Don't have an account?</p>
-        <NavLink to={"/register"}>CREATE ONE NOW</NavLink>
+        <p className={styles.Accnt}>Don't have an account?</p>
+        <NavLink className={styles.Link} to={"/register"}>
+          Create one now
+        </NavLink>
       </div>
     );
   }

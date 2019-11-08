@@ -5,7 +5,7 @@ import * as styles from "./NavItem.module.css";
 const NavItem = props => {
   return (
     <li className={styles.NavItem}>
-      <NavLink to={props.link} exact activeClassName={styles.Acvtive}>
+      <NavLink to={props.link} exact activeClassName={styles.active}>
         {props.children}
       </NavLink>
     </li>

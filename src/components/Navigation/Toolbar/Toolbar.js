@@ -1,5 +1,5 @@
 import React from "react";
-import NavItems from "../NavItems/NavItmes";
+import NavItems from "../NavItems/NavItems";
 import DrawerToggle from "../SideDrawer/DrawerToggle/DrawerToggle";
 
 import * as styles from "./Toolbar.module.css";

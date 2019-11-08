@@ -52,8 +52,10 @@ class Register extends Component {
             />
             <input className={styles.Btn} type="submit" value="Log In" />
           </form>
-          <p>Already have an account?</p>
-          <NavLink to={"/"}>SIGN IN</NavLink>
+          <p className={styles.Accnt}>Already have an account?</p>
+          <NavLink className={styles.Link} to={"/"}>
+            SIGN IN
+          </NavLink>
         </div>
       </div>
     );
