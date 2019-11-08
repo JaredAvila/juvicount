@@ -3,16 +3,15 @@ import { Route } from "react-router-dom";
 import Wallet from "./containers/Wallet/Wallet";
 import Login from "./containers/Auth/Login/Login";
 import Register from "./containers/Auth/Register/Register";
-import ToolBar from "./components/Navigation/Toolbar/Toolbar";
+import Layout from "./hoc/Layout/Layout";
 
 function App() {
   return (
-    <div className="App">
-      <ToolBar></ToolBar>
+    <Layout>
       <Route path="/" exact component={Login} />
       <Route path="/register" exact component={Register} />
       <Route path="/wallet" component={Wallet} />
-    </div>
+    </Layout>
   );
 }
 
