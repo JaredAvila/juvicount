@@ -1,5 +1,9 @@
 import React, { Component } from "react";
 
+import { NavLink } from "react-router-dom";
+
+import * as styles from "./Login.module.css";
+
 class Login extends Component {
   state = {
     username: "",
@@ -26,7 +30,7 @@ class Login extends Component {
 
   render() {
     return (
-      <div>
+      <div className={styles.Login}>
         <h1>Juvicount</h1>
         <div>
           <h4>Sign In</h4>
@@ -43,8 +47,10 @@ class Login extends Component {
               value={this.state.password}
               onChange={this.onPasswordChangeHanlder}
             />
-            <input type="submit" value="Log In" />
+            <input className={styles.Btn} type="submit" value="Log In" />
           </form>
+          <p>Don't have an account?</p>
+          <NavLink to={"/register"}>CREATE ONE NOW</NavLink>
         </div>
       </div>
     );

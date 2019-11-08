@@ -1,0 +1,33 @@
+.Login {
+    color: rgb(121, 134, 0);
+}
+
+.Login h1 {
+    font-family: 'Bowlby One SC', cursive;
+    letter-spacing: .5rem;
+    font-size: 4rem;
+}
+
+.Login h4 {
+    font-size: 2rem;
+}
+
+.Login form {
+    display: flex;
+    flex-flow: column;
+    width: 500px;
+}
+
+.Login input {
+    border: 1px solid rgb(53, 53, 53);
+    outline: none;
+    border-radius: 25px;
+    margin-bottom: 5px;
+    padding: 5px 10px;
+    font-size: 1.2rem;
+}
+
+.Login input.Btn {
+    background-color: rgb(198, 137, 255);
+    border: none;
+}
