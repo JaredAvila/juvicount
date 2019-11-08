@@ -13,7 +13,7 @@ const SideDrawer = props => {
       <BackDrop show={props.open} clicked={props.closed} />
       <div className={attachedstyles.join(" ")}>
         <nav>
-          <NavItems />
+          <NavItems clicked={props.closed} />
         </nav>
       </div>
     </Fragment>

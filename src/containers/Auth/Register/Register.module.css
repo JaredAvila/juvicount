@@ -1,5 +1,7 @@
 .Register {
     color: rgb(121, 134, 0);
+    width: 500px;
+    margin: auto;
 }
 
 .Register h1 {
@@ -15,7 +17,7 @@
 .Register form {
     display: flex;
     flex-flow: column;
-    width: 500px;
+    width: 100%;
 }
 
 .Register input {
@@ -30,4 +32,10 @@
 .Register input.Btn {
     background-color: rgb(198, 137, 255);
     border: none;
+}
+
+@media only screen and (max-width: 500px) {
+    .Register {
+        width: 80%;
+    }
 }
