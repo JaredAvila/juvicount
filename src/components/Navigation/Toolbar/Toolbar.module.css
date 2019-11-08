@@ -1,0 +1,15 @@
+.Toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Toolbar h1 {
+    font-family: 'Bowlby One SC', cursive;
+    letter-spacing: .5rem;
+    font-size: 2rem;
+}
+
+.Toolbar h1 {
+    font-size: 2rem;
+}

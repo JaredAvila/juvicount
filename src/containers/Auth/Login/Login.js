@@ -31,27 +31,24 @@ class Login extends Component {
   render() {
     return (
       <div className={styles.Login}>
-        <h1>Juvicount</h1>
-        <div>
-          <h4>Sign In</h4>
-          <form onSubmit={this.onSubmitHandler}>
-            <input
-              type="text"
-              placeholder="Username"
-              onChange={this.onUsernameChangeHanlder}
-              value={this.state.username}
-            />
-            <input
-              type="password"
-              placeholder="Password"
-              value={this.state.password}
-              onChange={this.onPasswordChangeHanlder}
-            />
-            <input className={styles.Btn} type="submit" value="Log In" />
-          </form>
-          <p>Don't have an account?</p>
-          <NavLink to={"/register"}>CREATE ONE NOW</NavLink>
-        </div>
+        <h4>Sign In</h4>
+        <form onSubmit={this.onSubmitHandler}>
+          <input
+            type="text"
+            placeholder="Username"
+            onChange={this.onUsernameChangeHanlder}
+            value={this.state.username}
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            value={this.state.password}
+            onChange={this.onPasswordChangeHanlder}
+          />
+          <input className={styles.Btn} type="submit" value="Log In" />
+        </form>
+        <p>Don't have an account?</p>
+        <NavLink to={"/register"}>CREATE ONE NOW</NavLink>
       </div>
     );
   }
