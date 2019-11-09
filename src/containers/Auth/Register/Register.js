@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 import Input from "../../../UI/Input/Input";
 import { NavLink } from "react-router-dom";
+import { checkValidation } from "../../../helpers/validation";
 
 import * as styles from "./Register.module.css";
 
@@ -15,7 +16,13 @@ class Register extends Component {
           placeholder: "Email",
           autoComplete: "username"
         },
-        value: ""
+        value: "",
+        valid: false,
+        touched: false,
+        validation: {
+          required: true,
+          isEmail: true
+        }
       },
       password: {
         elementType: "input",
@@ -24,7 +31,13 @@ class Register extends Component {
           placeholder: "Password",
           autoComplete: "new-password"
         },
-        value: ""
+        value: "",
+        valid: false,
+        touched: false,
+        validation: {
+          required: true,
+          minLength: 6
+        }
       },
       password2: {
         elementType: "input",
@@ -33,9 +46,16 @@ class Register extends Component {
           placeholder: "Confirm Password",
           autoComplete: "new-password"
         },
-        value: ""
+        value: "",
+        valid: false,
+        touched: false,
+        validation: {
+          required: true,
+          minLength: 6
+        }
       }
-    }
+    },
+    noMatch: false
   };
 
   onChangedHandler = (e, type) => {
@@ -43,14 +63,26 @@ class Register extends Component {
       ...this.state.controls,
       [type]: {
         ...this.state.controls[type],
-        value: e.target.value
+        value: e.target.value,
+        touched: true,
+        valid: checkValidation(
+          e.target.value,
+          this.state.controls[type].validation
+        )
       }
     };
-    this.setState({ controls: updatedControls });
+    this.setState({ controls: updatedControls, noMatch: false });
   };
 
   onSubmitHandler = e => {
     e.preventDefault();
+    if (
+      this.state.controls["password"].value !==
+      this.state.controls["password2"].value
+    ) {
+      this.setState({ noMatch: true });
+      return;
+    }
     console.log(
       `Username: ${this.state.controls["email"].value} \n Password: ${this.state.controls["password"].value}`
     );
@@ -73,6 +105,9 @@ class Register extends Component {
           inputType={formElement.config.elementType}
           config={formElement.config.elementConfig}
           value={formElement.config.value}
+          invalid={!formElement.config.valid}
+          shouldValidate={formElement.config.validation}
+          touched={formElement.config.touched}
           changed={e => this.onChangedHandler(e, formElement.id)}
         />
       );
@@ -84,6 +119,7 @@ class Register extends Component {
           <form onSubmit={this.onSubmitHandler}>
             {form}
             <input className={styles.Btn} type="submit" value="Sign In" />
+            {this.state.noMatch ? <p>Passwords do not match</p> : null}
           </form>
           <p className={styles.Accnt}>Already have an account?</p>
           <NavLink className={styles.Link} to={"/"}>

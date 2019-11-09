@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 import { NavLink } from "react-router-dom";
 import Input from "../../../UI/Input/Input";
+import { checkValidation } from "../../../helpers/validation";
 
 import * as styles from "./Login.module.css";
 
@@ -15,7 +16,13 @@ class Login extends Component {
           placeholder: "Email",
           autoComplete: "username"
         },
-        value: ""
+        value: "",
+        validation: {
+          required: true,
+          isEmail: true
+        },
+        valid: false,
+        touched: false
       },
       password: {
         elementType: "input",
@@ -24,7 +31,13 @@ class Login extends Component {
           placeholder: "Password",
           autoComplete: "current-password"
         },
-        value: ""
+        value: "",
+        validation: {
+          required: true,
+          minLength: 6
+        },
+        valid: false,
+        touched: false
       }
     }
   };
@@ -34,7 +47,12 @@ class Login extends Component {
       ...this.state.controls,
       [type]: {
         ...this.state.controls[type],
-        value: e.target.value
+        value: e.target.value,
+        valid: checkValidation(
+          e.target.value,
+          this.state.controls[type].validation
+        ),
+        touched: true
       }
     };
     this.setState({ controls: updatedControls });
@@ -65,6 +83,9 @@ class Login extends Component {
           inputType={formElement.config.elementType}
           config={formElement.config.elementConfig}
           value={formElement.config.value}
+          invalid={!formElement.config.valid}
+          shouldValidate={formElement.config.validation}
+          touched={formElement.config.touched}
           changed={e => this.onChangedHandler(e, formElement.id)}
         />
       );

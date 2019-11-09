@@ -1,11 +1,24 @@
 import React from "react";
 
+import * as styles from "./Input.module.css";
+
 const Input = props => {
+  const inputClasses = [styles.InputElement];
   let inputElement = null;
+
+  if (props.invalid && props.shouldValidate && props.touched) {
+    inputClasses.push(styles.Invalid);
+  }
+
   switch (props.inputType) {
     case "input":
       inputElement = (
-        <input onChange={props.changed} value={props.value} {...props.config} />
+        <input
+          className={inputClasses.join(" ")}
+          onChange={props.changed}
+          value={props.value}
+          {...props.config}
+        />
       );
       break;
     case "textarea":
