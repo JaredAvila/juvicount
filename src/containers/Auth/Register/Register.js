@@ -18,6 +18,22 @@ class Register extends Component {
     this.setState({ password: e.target.value });
   };
 
+  onFirstNameChangeHanlder = e => {
+    this.setState({ firstName: e.target.value });
+  };
+
+  onLastNameChangeHanlder = e => {
+    this.setState({ lastName: e.target.value });
+  };
+
+  onEmailChangeHanlder = e => {
+    this.setState({ email: e.target.value });
+  };
+
+  onPassword2ChangeHanlder = e => {
+    this.setState({ password2: e.target.value });
+  };
+
   onUsernameChangeHanlder = e => {
     this.setState({ username: e.target.value });
   };
@@ -45,10 +61,34 @@ class Register extends Component {
               value={this.state.username}
             />
             <input
+              type="text"
+              placeholder="First Name"
+              value={this.state.firstName}
+              onChange={this.onFirstNameChangeHanlder}
+            />
+            <input
+              type="text"
+              placeholder="Last Name"
+              value={this.state.lastName}
+              onChange={this.onLastNameChangeHanlder}
+            />
+            <input
+              type="text"
+              placeholder="Email"
+              value={this.state.email}
+              onChange={this.onEmailChangeHanlder}
+            />
+            <input
               type="password"
               placeholder="Password"
               value={this.state.password}
               onChange={this.onPasswordChangeHanlder}
+            />
+            <input
+              type="password"
+              placeholder="Confirm Password"
+              value={this.state.password2}
+              onChange={this.onPassword2ChangeHanlder}
             />
             <input className={styles.Btn} type="submit" value="Log In" />
           </form>
