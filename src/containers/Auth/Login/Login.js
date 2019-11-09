@@ -1,27 +1,49 @@
 import React, { Component } from "react";
 
 import { NavLink } from "react-router-dom";
+import Input from "../../../UI/Input/Input";
 
 import * as styles from "./Login.module.css";
 
 class Login extends Component {
   state = {
-    username: "",
-    password: ""
+    controls: {
+      email: {
+        elementType: "input",
+        elementConfig: {
+          type: "text",
+          placeholder: "Email",
+          autoComplete: "username"
+        },
+        value: ""
+      },
+      password: {
+        elementType: "input",
+        elementConfig: {
+          type: "password",
+          placeholder: "Password",
+          autoComplete: "current-password"
+        },
+        value: ""
+      }
+    }
   };
 
-  onPasswordChangeHanlder = e => {
-    this.setState({ password: e.target.value });
-  };
-
-  onUsernameChangeHanlder = e => {
-    this.setState({ username: e.target.value });
+  onChangedHandler = (e, type) => {
+    const updatedControls = {
+      ...this.state.controls,
+      [type]: {
+        ...this.state.controls[type],
+        value: e.target.value
+      }
+    };
+    this.setState({ controls: updatedControls });
   };
 
   onSubmitHandler = e => {
     e.preventDefault();
     console.log(
-      `Username: ${this.state.username} \n Password: ${this.state.password}`
+      `Username: ${this.state.controls["email"].value} \n Password: ${this.state.controls["password"].value}`
     );
     //Submit to be authenticated
     this.setState({ username: "", password: "" });
@@ -29,22 +51,29 @@ class Login extends Component {
   };
 
   render() {
+    const formElementsArray = [];
+    for (let key in this.state.controls) {
+      formElementsArray.push({
+        id: key,
+        config: this.state.controls[key]
+      });
+    }
+    let form = formElementsArray.map(formElement => {
+      return (
+        <Input
+          key={formElement.id}
+          inputType={formElement.config.elementType}
+          config={formElement.config.elementConfig}
+          value={formElement.config.value}
+          changed={e => this.onChangedHandler(e, formElement.id)}
+        />
+      );
+    });
     return (
       <div className={styles.Login}>
         <h4>Sign In</h4>
         <form onSubmit={this.onSubmitHandler}>
-          <input
-            type="text"
-            placeholder="Username"
-            onChange={this.onUsernameChangeHanlder}
-            value={this.state.username}
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            value={this.state.password}
-            onChange={this.onPasswordChangeHanlder}
-          />
+          {form}
           <input className={styles.Btn} type="submit" value="Log In" />
         </form>
         <p className={styles.Accnt}>Don't have an account?</p>

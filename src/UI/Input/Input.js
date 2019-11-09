@@ -1,14 +1,30 @@
 import React from "react";
 
 const Input = props => {
-  //   switch (props.inputType) {
-  //     case "input":
-  //       return <input onChange={props.changed} {...props} />;
-  //     case "textarea":
-  //       return <textarea onChange={props.changed} {...props}></textarea>;
-  //     default:
-  //       return <input onChange={props.changed} {...props} />;
-  //   }
+  let inputElement = null;
+  switch (props.inputType) {
+    case "input":
+      inputElement = (
+        <input onChange={props.changed} value={props.value} {...props.config} />
+      );
+      break;
+    case "textarea":
+      inputElement = (
+        <textarea
+          onChange={props.changed}
+          value={props.value}
+          {...props.config}
+        ></textarea>
+      );
+      break;
+    default:
+      inputElement = (
+        <input onChange={props.changed} value={props.value} {...props.config} />
+      );
+      break;
+  }
+
+  return inputElement;
 };
 
 export default Input;
